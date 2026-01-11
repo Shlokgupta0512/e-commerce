@@ -33,36 +33,63 @@ const FeaturedProducts = ({ featuredProducts }) => {
 	const isEndDisabled = currentIndex >= featuredProducts.length - itemsPerPage;
 
 	return (
-		<div className='py-12'>
+		<div className='py-20'>
 			<div className='container mx-auto px-4'>
-				<h2 className='text-center text-5xl sm:text-6xl font-bold text-emerald-400 mb-4'>Featured</h2>
+				<div className='flex items-center justify-between mb-8'>
+					<h2 className='text-3xl md:text-4xl font-black text-gray-900 tracking-tight'>
+						Top <span className='text-blue-600'>Deals</span>
+					</h2>
+					<div className='flex gap-2'>
+						<button
+							onClick={prevSlide}
+							disabled={isStartDisabled}
+							className={`p-2.5 rounded-xl border transition-all duration-300 ${isStartDisabled ? "bg-gray-50 text-gray-300 border-gray-100" : "bg-white text-blue-600 border-gray-200 hover:border-blue-500 hover:bg-blue-50 shadow-sm"
+								}`}
+						>
+							<ChevronLeft className='w-6 h-6' />
+						</button>
+
+						<button
+							onClick={nextSlide}
+							disabled={isEndDisabled}
+							className={`p-2.5 rounded-xl border transition-all duration-300 ${isEndDisabled ? "bg-gray-50 text-gray-300 border-gray-100" : "bg-white text-blue-600 border-gray-200 hover:border-blue-500 hover:bg-blue-50 shadow-sm"
+								}`}
+						>
+							<ChevronRight className='w-6 h-6' />
+						</button>
+					</div>
+				</div>
+
 				<div className='relative'>
-					<div className='overflow-hidden'>
+					<div className='overflow-hidden rounded-2xl'>
 						<div
-							className='flex transition-transform duration-300 ease-in-out'
+							className='flex transition-transform duration-500 ease-out'
 							style={{ transform: `translateX(-${currentIndex * (100 / itemsPerPage)}%)` }}
 						>
 							{featuredProducts?.map((product) => (
-								<div key={product._id} className='w-full sm:w-1/2 lg:w-1/3 xl:w-1/4 flex-shrink-0 px-2'>
-									<div className='bg-white bg-opacity-10 backdrop-blur-sm rounded-lg shadow-lg overflow-hidden h-full transition-all duration-300 hover:shadow-xl border border-emerald-500/30'>
-										<div className='overflow-hidden'>
+								<div key={product._id} className='w-full sm:w-1/2 lg:w-1/3 xl:w-1/4 flex-shrink-0 px-3'>
+									<div className='bg-white rounded-2xl shadow-sm hover:shadow-xl overflow-hidden h-full transition-all duration-300 border border-gray-100 group'>
+										<div className='relative h-64 overflow-hidden'>
 											<img
 												src={product.image}
 												alt={product.name}
-												className='w-full h-48 object-cover transition-transform duration-300 ease-in-out hover:scale-110'
+												className='w-full h-full object-cover transition-transform duration-500 group-hover:scale-105'
 											/>
+											<div className='absolute top-3 left-3'>
+												<span className='bg-yellow-400 text-gray-900 text-[10px] font-black px-2.5 py-1 rounded-full shadow-sm'>BESTSELLER</span>
+											</div>
 										</div>
-										<div className='p-4'>
-											<h3 className='text-lg font-semibold mb-2 text-white'>{product.name}</h3>
-											<p className='text-emerald-300 font-medium mb-4'>
+										<div className='p-5'>
+											<h3 className='text-lg font-bold mb-1 text-gray-900 group-hover:text-blue-600 transition-colors'>{product.name}</h3>
+											<p className='text-blue-600 font-black text-xl mb-4'>
 												${product.price.toFixed(2)}
 											</p>
 											<button
 												onClick={() => addToCart(product)}
-												className='w-full bg-emerald-600 hover:bg-emerald-500 text-white font-semibold py-2 px-4 rounded transition-colors duration-300 
-												flex items-center justify-center'
+												className='w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-xl transition-all duration-300 
+												flex items-center justify-center gap-2 shadow-lg shadow-blue-100 active:scale-95'
 											>
-												<ShoppingCart className='w-5 h-5 mr-2' />
+												<ShoppingCart className='w-5 h-5' />
 												Add to Cart
 											</button>
 										</div>
@@ -71,25 +98,6 @@ const FeaturedProducts = ({ featuredProducts }) => {
 							))}
 						</div>
 					</div>
-					<button
-						onClick={prevSlide}
-						disabled={isStartDisabled}
-						className={`absolute top-1/2 -left-4 transform -translate-y-1/2 p-2 rounded-full transition-colors duration-300 ${
-							isStartDisabled ? "bg-gray-400 cursor-not-allowed" : "bg-emerald-600 hover:bg-emerald-500"
-						}`}
-					>
-						<ChevronLeft className='w-6 h-6' />
-					</button>
-
-					<button
-						onClick={nextSlide}
-						disabled={isEndDisabled}
-						className={`absolute top-1/2 -right-4 transform -translate-y-1/2 p-2 rounded-full transition-colors duration-300 ${
-							isEndDisabled ? "bg-gray-400 cursor-not-allowed" : "bg-emerald-600 hover:bg-emerald-500"
-						}`}
-					>
-						<ChevronRight className='w-6 h-6' />
-					</button>
 				</div>
 			</div>
 		</div>
