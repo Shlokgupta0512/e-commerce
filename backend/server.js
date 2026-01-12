@@ -1,5 +1,5 @@
+import "dotenv/config";
 import express from "express";
-import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -11,9 +11,6 @@ import paymentRoutes from "./routes/payment.route.js";
 import analyticsRoutes from "./routes/analytics.route.js";
 
 import { connectDB } from "./lib/db.js";
-
-// ✅ Load env vars
-dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;

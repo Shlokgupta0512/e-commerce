@@ -10,7 +10,7 @@ import PurchaseSuccessPage from "./pages/PurchaseSuccessPage";
 import PurchaseCancelPage from "./pages/PurchaseCancelPage";
 
 import Navbar from "./components/Navbar";
-import CategoryBar from "./components/CategoryBar";
+
 import { Toaster } from "react-hot-toast";
 import LoadingSpinner from "./components/LoadingSpinner";
 import { useCartStore } from "./stores/useCartStore";
@@ -50,7 +50,7 @@ function App() {
 		<div className='min-h-screen bg-gray-100 text-gray-900 relative overflow-hidden font-sans selection:bg-blue-100 selection:text-blue-600'>
 			<div className='relative z-50 pt-[72px] md:pt-[84px]'>
 				<Navbar />
-				<CategoryBar />
+
 				<div className='container mx-auto px-4 lg:px-10 py-8 md:py-12'>
 					<Routes>
 						<Route path='/' element={<HomePage />} />
