@@ -47,7 +47,7 @@ function App() {
 	const isUploader = user?.publicMetadata?.role === "uploader";
 
 	return (
-		<div className='min-h-screen bg-gray-100 text-gray-900 relative overflow-hidden font-sans selection:bg-blue-100 selection:text-blue-600'>
+		<div className='min-h-screen bg-gray-100 text-gray-900 relative font-sans selection:bg-blue-100 selection:text-blue-600'>
 			<div className='relative z-50 pt-[72px] md:pt-[84px]'>
 				<Navbar />
 

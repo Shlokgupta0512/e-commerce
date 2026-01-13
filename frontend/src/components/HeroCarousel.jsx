@@ -21,6 +21,7 @@ const slides = [
 
 const HeroCarousel = () => {
     const [current, setCurrent] = useState(0);
+    const [isPaused, setIsPaused] = useState(false);
 
     const prevSlide = () => {
         setCurrent(current === 0 ? slides.length - 1 : current - 1);
@@ -31,56 +32,64 @@ const HeroCarousel = () => {
     };
 
     useEffect(() => {
+        if (isPaused) return;
         const interval = setInterval(() => {
             nextSlide();
         }, 5000);
         return () => clearInterval(interval);
-    }, [current]);
+    }, [current, isPaused]);
 
     return (
-        <div className="relative w-full overflow-hidden bg-gray-100 mb-4">
-            <div className="relative h-[200px] sm:h-[280px] lg:h-[320px] w-full">
+        <div
+            className="relative w-full overflow-hidden bg-gray-900 mb-6 group"
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+        >
+            {/* Main Carousel Area - Responsive Heights */}
+            <div className="relative h-[250px] sm:h-[400px] lg:h-[500px] w-full">
                 {slides.map((slide, index) => (
                     <div
                         key={slide.id}
-                        className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${index === current ? "opacity-100" : "opacity-0"
+                        className={`absolute inset-0 transition-all duration-700 ease-in-out transform ${index === current ? "opacity-100 scale-100" : "opacity-0 scale-105"
                             }`}
                     >
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-10" />
                         <img
                             src={slide.image}
                             alt={slide.alt}
-                            className="w-full h-full object-cover sm:object-fill"
+                            className="w-full h-full object-cover object-center"
                         />
                     </div>
                 ))}
             </div>
 
-            {/* Left Arrow */}
-            <button
-                title="Previous Slide"
-                onClick={prevSlide}
-                className="absolute top-1/2 left-2 sm:left-4 z-30 -translate-y-1/2 bg-white/40 hover:bg-white text-gray-800 p-2 sm:p-3 rounded-l-md shadow-md transition-all"
-            >
-                <ChevronLeft size={24} />
-            </button>
+            {/* Navigation Controls - Hidden on mobile, shown on hover/desktop */}
+            <div className="absolute inset-0 flex items-center justify-between p-4 pointer-events-none z-20">
+                <button
+                    title="Previous Slide"
+                    onClick={prevSlide}
+                    className="pointer-events-auto p-3 rounded-full bg-black/20 backdrop-blur-md border border-white/10 text-white hover:bg-white hover:text-black transition-all duration-300 -translate-x-4 opacity-0 group-hover:translate-x-0 group-hover:opacity-100"
+                >
+                    <ChevronLeft size={24} />
+                </button>
+                <button
+                    title="Next Slide"
+                    onClick={nextSlide}
+                    className="pointer-events-auto p-3 rounded-full bg-black/20 backdrop-blur-md border border-white/10 text-white hover:bg-white hover:text-black transition-all duration-300 translate-x-4 opacity-0 group-hover:translate-x-0 group-hover:opacity-100"
+                >
+                    <ChevronRight size={24} />
+                </button>
+            </div>
 
-            {/* Right Arrow */}
-            <button
-                title="Next Slide"
-                onClick={nextSlide}
-                className="absolute top-1/2 right-2 sm:right-4 z-30 -translate-y-1/2 bg-white/40 hover:bg-white text-gray-800 p-2 sm:p-3 rounded-r-md shadow-md transition-all"
-            >
-                <ChevronRight size={24} />
-            </button>
-
-            {/* Dots */}
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-30 flex space-x-2">
+            {/* Indicators */}
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-30 flex space-x-3">
                 {slides.map((_, index) => (
                     <button
                         key={index}
-                        title={`Go to slide ${index + 1}`}
                         onClick={() => setCurrent(index)}
-                        className={`w-2 h-2 rounded-full transition-colors ${index === current ? "bg-white" : "bg-white/50 hover:bg-white/80"
+                        className={`h-1.5 rounded-full transition-all duration-300 ${index === current
+                                ? "w-8 bg-white"
+                                : "w-2 bg-white/50 hover:bg-white/80"
                             }`}
                     />
                 ))}
