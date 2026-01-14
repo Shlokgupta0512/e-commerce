@@ -30,17 +30,38 @@ const CheckboxFilter = ({ label }) => (
 
 const CategoryPage = () => {
 	const { fetchProductsByCategory, products } = useProductStore();
-	const { category } = useParams();
+	const { category, subcategory } = useParams();
 
 	useEffect(() => {
 		fetchProductsByCategory(category);
 	}, [fetchProductsByCategory, category]);
 
-	const formattedCategory = category ? category.charAt(0).toUpperCase() + category.slice(1) : "";
+	// Derived state for filtering
+	const [selectedBrands, setSelectedBrands] = useState(subcategory ? [subcategory] : []);
+
+	// Update selected brands if URL subcategory changes
+	useEffect(() => {
+		if (subcategory) setSelectedBrands([subcategory]);
+	}, [subcategory]);
+
+	const formattedCategory = (subcategory ? subcategory : category).charAt(0).toUpperCase() + (subcategory ? subcategory : category).slice(1);
+
+	// Filter Products Logic
+	const filteredProducts = products?.filter(product => {
+		// Brand Filter
+		if (selectedBrands.length > 0 && subcategory) {
+			// Strict match for URL subcategory to ensure "Mi" link shows only Mi
+			return product.brand?.toLowerCase() === subcategory.toLowerCase();
+		}
+		if (selectedBrands.length > 0) {
+			return selectedBrands.includes(product.brand?.toLowerCase());
+		}
+		return true;
+	});
 
 	// Dummy graphics for the banner based on category
 	const getBannerImage = (cat) => {
-		if (cat === "mobiles") return "https://rukminim1.flixcart.com/fk-p-flap/1600/270/image/aa1b237568600f12.jpg?q=20"; // Sample banner
+		if (cat === "mobiles") return "https://rukminim1.flixcart.com/fk-p-flap/1600/270/image/aa1b237568600f12.jpg?q=20";
 		return "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?q=80&w=2070";
 	};
 
@@ -53,7 +74,7 @@ const CategoryPage = () => {
 					<div className="hidden lg:block w-[280px] flex-shrink-0 bg-white shadow-sm rounded-sm p-4 h-fit sticky top-[100px]">
 						<div className="flex justify-between items-center border-b border-gray-200 pb-3 mb-2">
 							<h2 className="text-lg font-bold text-gray-800">Filters</h2>
-							<span className="text-xs font-bold text-blue-600 cursor-pointer hover:underline">CLEAR ALL</span>
+							<span className="text-xs font-bold text-blue-600 cursor-pointer hover:underline" onClick={() => setSelectedBrands([])}>CLEAR ALL</span>
 						</div>
 
 						{/* Categories */}
@@ -61,8 +82,13 @@ const CategoryPage = () => {
 							<div className="text-[12px] font-medium text-gray-400 mb-2 uppercase">Categories</div>
 							<div className="text-[14px] text-gray-600 flex items-center gap-2">
 								<ChevronDown size={14} className="text-gray-400" />
-								<span>{formattedCategory}</span>
+								<span>{category.charAt(0).toUpperCase() + category.slice(1)}</span>
 							</div>
+							{subcategory && (
+								<div className="pl-6 text-[14px] font-bold text-black mt-1">
+									{subcategory.charAt(0).toUpperCase() + subcategory.slice(1)}
+								</div>
+							)}
 						</div>
 
 						{/* Price Range */}
@@ -82,11 +108,14 @@ const CategoryPage = () => {
 
 						{/* Brand */}
 						<FilterSection title="Brand">
-							<CheckboxFilter label="Samsung" />
-							<CheckboxFilter label="Apple" />
-							<CheckboxFilter label="Realme" />
-							<CheckboxFilter label="Uniqlo" />
-							<CheckboxFilter label="Nike" />
+							{['mi', 'samsung', 'apple', 'realme', 'motorola', 'poco'].map(brand => (
+								<CheckboxFilter
+									key={brand}
+									label={brand.toUpperCase()}
+									checked={subcategory === brand}
+									onChange={() => { }}
+								/>
+							))}
 						</FilterSection>
 
 						{/* Customer Ratings */}
@@ -118,7 +147,7 @@ const CategoryPage = () => {
 						<div className="bg-white p-4 shadow-sm rounded-sm mb-3">
 							<h1 className="text-lg sm:text-2xl font-bold text-gray-800 mb-2">
 								{formattedCategory}
-								<span className="text-sm font-normal text-gray-500 ml-2">(Showing 1 – {products?.length || 0} products)</span>
+								<span className="text-sm font-normal text-gray-500 ml-2">(Showing 1 – {filteredProducts?.length || 0} products)</span>
 							</h1>
 							<div className="flex items-center gap-4 text-sm text-gray-700 font-medium">
 								<span className="font-bold border-b-2 border-blue-600 pb-0.5 text-blue-600 cursor-pointer">Popularity</span>
@@ -145,14 +174,14 @@ const CategoryPage = () => {
 								animate={{ opacity: 1 }}
 								transition={{ duration: 0.5 }}
 							>
-								{products?.length === 0 && (
+								{filteredProducts?.length === 0 && (
 									<div className="col-span-full py-12 text-center">
 										<h2 className="text-xl font-semibold text-gray-400">No products found in this category</h2>
 										<p className="text-gray-500">Try adjusting your filters</p>
 									</div>
 								)}
 
-								{products?.map((product) => (
+								{filteredProducts?.map((product) => (
 									<ProductCard key={product._id} product={product} />
 								))}
 							</motion.div>

@@ -75,6 +75,7 @@ function App() {
 							element={isUploader ? <AdminPage /> : <Navigate to='/' />}
 						/>
 						<Route path='/category/:category' element={<CategoryPage />} />
+						<Route path='/category/:category/:subcategory' element={<CategoryPage />} />
 						<Route path='/cart' element={isSignedIn ? <CartPage /> : <Navigate to='/login' />} />
 						<Route
 							path='/purchase-success'
