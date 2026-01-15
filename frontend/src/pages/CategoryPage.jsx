@@ -21,9 +21,14 @@ const FilterSection = ({ title, children, defaultOpen = true }) => {
 	);
 };
 
-const CheckboxFilter = ({ label }) => (
+const CheckboxFilter = ({ label, checked, onChange }) => (
 	<label className="flex items-center gap-2 cursor-pointer group">
-		<input type="checkbox" className="w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500" />
+		<input
+			type="checkbox"
+			className="w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+			checked={checked}
+			onChange={onChange}
+		/>
 		<span className="text-[14px] text-gray-700 group-hover:text-gray-900">{label}</span>
 	</label>
 );
@@ -37,22 +42,28 @@ const CategoryPage = () => {
 	}, [fetchProductsByCategory, category]);
 
 	// Derived state for filtering
-	const [selectedBrands, setSelectedBrands] = useState(subcategory ? [subcategory] : []);
+	const [selectedBrands, setSelectedBrands] = useState(subcategory ? [subcategory.toLowerCase()] : []);
 
 	// Update selected brands if URL subcategory changes
 	useEffect(() => {
-		if (subcategory) setSelectedBrands([subcategory]);
+		if (subcategory) setSelectedBrands([subcategory.toLowerCase()]);
+		else setSelectedBrands([]); // Clear if no subcategory
 	}, [subcategory]);
+
+	const toggleBrand = (brand) => {
+		const brandLower = brand.toLowerCase();
+		setSelectedBrands(prev =>
+			prev.includes(brandLower)
+				? prev.filter(b => b !== brandLower)
+				: [...prev, brandLower]
+		);
+	};
 
 	const formattedCategory = (subcategory ? subcategory : category).charAt(0).toUpperCase() + (subcategory ? subcategory : category).slice(1);
 
 	// Filter Products Logic
 	const filteredProducts = products?.filter(product => {
 		// Brand Filter
-		if (selectedBrands.length > 0 && subcategory) {
-			// Strict match for URL subcategory to ensure "Mi" link shows only Mi
-			return product.brand?.toLowerCase() === subcategory.toLowerCase();
-		}
 		if (selectedBrands.length > 0) {
 			return selectedBrands.includes(product.brand?.toLowerCase());
 		}
@@ -112,8 +123,8 @@ const CategoryPage = () => {
 								<CheckboxFilter
 									key={brand}
 									label={brand.toUpperCase()}
-									checked={subcategory === brand}
-									onChange={() => { }}
+									checked={selectedBrands.includes(brand)}
+									onChange={() => toggleBrand(brand)}
 								/>
 							))}
 						</FilterSection>
