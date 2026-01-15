@@ -13,7 +13,7 @@ const mobiles = [
         price: 24999,
         category: "mobiles",
         brand: "mi",
-        image: "https://i01.appmifile.com/v1/MI_18455B3E4DA706226CF7535A58E875F0267/pms_1704355523.51859664!400x400!85.png",
+        image: "https://images.unsplash.com/photo-1698744766444-a09562ac3f31?q=80&w=800&auto=format&fit=crop", // Redmi Note 13 Pro style
         isFeatured: true
     },
     {
@@ -22,7 +22,7 @@ const mobiles = [
         price: 99999,
         category: "mobiles",
         brand: "mi",
-        image: "https://i01.appmifile.com/v1/MI_18455B3E4DA706226CF7535A58E875F0267/pms_1709893979.74088219!400x400!85.png",
+        image: "https://images.unsplash.com/photo-1709778749712-4299b867c265?q=80&w=800&auto=format&fit=crop", // Xiaomi 14 style
         isFeatured: true
     },
     {
@@ -31,7 +31,7 @@ const mobiles = [
         price: 13999,
         category: "mobiles",
         brand: "mi",
-        image: "https://i01.appmifile.com/v1/MI_18455B3E4DA706226CF7535A58E875F0267/pms_1701837568.61803738!400x400!85.png",
+        image: "https://images.unsplash.com/photo-1598327105666-5b89351aff23?q=80&w=800&auto=format&fit=crop", // Modern android
     },
     {
         name: "Redmi Note 12 Pro+ 5G (8GB RAM, 256GB)",
@@ -39,7 +39,7 @@ const mobiles = [
         price: 27999,
         category: "mobiles",
         brand: "mi",
-        image: "https://i01.appmifile.com/v1/MI_18455B3E4DA706226CF7535A58E875F0267/pms_1673004164.81824986!400x400!85.png",
+        image: "https://images.unsplash.com/photo-1678911820864-e2c567c65f97?q=80&w=800&auto=format&fit=crop", // Redmi Note 12 style
     },
     {
         name: "Xiaomi 13 Pro (12GB RAM, 256GB)",
@@ -47,7 +47,7 @@ const mobiles = [
         price: 74999,
         category: "mobiles",
         brand: "mi",
-        image: "https://i01.appmifile.com/v1/MI_18455B3E4DA706226CF7535A58E875F0267/pms_1677490116.05394673!400x400!85.png",
+        image: "https://images.unsplash.com/photo-1680517904221-39580436858e?q=80&w=800&auto=format&fit=crop", // Xiaomi 13
     },
     {
         name: "Redmi 12 5G (6GB RAM, 128GB)",
@@ -55,7 +55,7 @@ const mobiles = [
         price: 11999,
         category: "mobiles",
         brand: "mi",
-        image: "https://i01.appmifile.com/v1/MI_18455B3E4DA706226CF7535A58E875F0267/pms_1691053679.58068991!400x400!85.png",
+        image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=800&auto=format&fit=crop", // Mobile
     },
 
     // --- Samsung (6 products) ---
@@ -65,7 +65,7 @@ const mobiles = [
         price: 129999,
         category: "mobiles",
         brand: "samsung",
-        image: "https://images.samsung.com/is/image/samsung/p6pim/in/sm-s928bztqins/gallery/in-galaxy-s24-ultra-s928-sm-s928bztqins-thumb-539573356?$344_344_PNG$",
+        image: "https://images.unsplash.com/photo-1706691456930-b4bd697e8845?q=80&w=800&auto=format&fit=crop", // S24 Ultra
         isFeatured: true
     },
     {
@@ -74,7 +74,7 @@ const mobiles = [
         price: 16999,
         category: "mobiles",
         brand: "samsung",
-        image: "https://images.samsung.com/is/image/samsung/p6pim/in/sm-m346bzddins/gallery/in-galaxy-m34-5g-sm-m346-sm-m346bzddins-thumb-537466861?$344_344_PNG$",
+        image: "https://images.unsplash.com/photo-1610945265078-3853eadab238?q=80&w=800&auto=format&fit=crop", // Galaxy A/M series
     },
     {
         name: "Samsung Galaxy Z Flip5",
@@ -82,7 +82,7 @@ const mobiles = [
         price: 99999,
         category: "mobiles",
         brand: "samsung",
-        image: "https://images.samsung.com/is/image/samsung/p6pim/in/sm-f731blgain/gallery/in-galaxy-z-flip5-f731-sm-f731blgain-thumb-537456720?$344_344_PNG$",
+        image: "https://images.unsplash.com/photo-1694665476140-5e36f0147986?q=80&w=800&auto=format&fit=crop", // Z Flip
     },
     {
         name: "Samsung Galaxy A54 5G (8GB RAM, 256GB)",
@@ -90,7 +90,7 @@ const mobiles = [
         price: 38999,
         category: "mobiles",
         brand: "samsung",
-        image: "https://images.samsung.com/is/image/samsung/p6pim/in/sm-a546elvdins/gallery/in-galaxy-a54-5g-sm-a546-sm-a546elvdins-thumb-536892142?$344_344_PNG$",
+        image: "https://images.unsplash.com/photo-1678911820864-e2c567c65f97?q=80&w=800&auto=format&fit=crop", // Galaxy A series
     },
     {
         name: "Samsung Galaxy S23 FE (8GB RAM, 128GB)",
@@ -98,7 +98,7 @@ const mobiles = [
         price: 49999,
         category: "mobiles",
         brand: "samsung",
-        image: "https://images.samsung.com/is/image/samsung/p6pim/in/sm-s711blbcins/gallery/in-galaxy-s23-fe-s711-sm-s711blbcins-thumb-538359162?$344_344_PNG$",
+        image: "https://images.unsplash.com/photo-1676903264426-30248ad3279c?q=80&w=800&auto=format&fit=crop", // S23
     },
     {
         name: "Samsung Galaxy M14 5G (6GB RAM, 128GB)",
@@ -106,7 +106,7 @@ const mobiles = [
         price: 13990,
         category: "mobiles",
         brand: "samsung",
-        image: "https://images.samsung.com/is/image/samsung/p6pim/in/sm-m146bzkdins/gallery/in-galaxy-m14-5g-sm-m146-sm-m146bzkdins-thumb-535892858?$344_344_PNG$",
+        image: "https://images.unsplash.com/photo-1574677271442-f3e1d51a6549?q=80&w=800&auto=format&fit=crop", // Galaxy M
     },
 
     // --- Apple (5 products) ---
@@ -116,7 +116,7 @@ const mobiles = [
         price: 159900,
         category: "mobiles",
         brand: "apple",
-        image: "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-15-pro-max-natural-titanium-select-202309?wid=940&hei=1112&fmt=png-alpha&.v=1693555335029",
+        image: "https://images.unsplash.com/photo-1695048133142-1a20484d2569?q=80&w=800&auto=format&fit=crop", // iPhone 15 Pro
         isFeatured: true
     },
     {
@@ -125,7 +125,7 @@ const mobiles = [
         price: 79900,
         category: "mobiles",
         brand: "apple",
-        image: "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-15-pink-select-202309?wid=940&hei=1112&fmt=png-alpha&.v=1693555335029",
+        image: "https://images.unsplash.com/photo-1696446702378-d50d3498f86f?q=80&w=800&auto=format&fit=crop", // iPhone 15 Pink
     },
     {
         name: "Apple iPhone 14 (Blue, 128GB)",
@@ -133,7 +133,7 @@ const mobiles = [
         price: 59999,
         category: "mobiles",
         brand: "apple",
-        image: "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-14-blue-select-202209?wid=940&hei=1112&fmt=png-alpha&.v=1661601639893",
+        image: "https://images.unsplash.com/photo-1663499482523-1c0c16742a0c?q=80&w=800&auto=format&fit=crop", // iPhone 14 Blue
     },
     {
         name: "Apple iPhone 13 (Midnight, 128GB)",
@@ -141,7 +141,7 @@ const mobiles = [
         price: 49900,
         category: "mobiles",
         brand: "apple",
-        image: "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-13-midnight-select-2021?wid=940&hei=1112&fmt=png-alpha&.v=1645572315986",
+        image: "https://images.unsplash.com/photo-1632661674596-df8be070a5c5?q=80&w=800&auto=format&fit=crop", // iPhone 13
     },
     {
         name: "Apple iPhone SE (Midnight, 64GB)",
@@ -149,7 +149,7 @@ const mobiles = [
         price: 43900,
         category: "mobiles",
         brand: "apple",
-        image: "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-se-midnight-select-2022?wid=940&hei=1112&fmt=png-alpha&.v=1646033433732",
+        image: "https://images.unsplash.com/photo-1546200216-52bd3c7c25c6?q=80&w=800&auto=format&fit=crop", // iPhone SE
     },
 
     // --- Realme (5 products) ---
@@ -159,7 +159,7 @@ const mobiles = [
         price: 29999,
         category: "mobiles",
         brand: "realme",
-        image: "https://image01.realme.net/general/20240129/1706509040846.png.webp",
+        image: "https://images.unsplash.com/photo-1616422712952-b8c8d8c36398?q=80&w=800&auto=format&fit=crop", // Realme style
         isFeatured: true
     },
     {
@@ -168,7 +168,7 @@ const mobiles = [
         price: 17999,
         category: "mobiles",
         brand: "realme",
-        image: "https://image01.realme.net/general/20230704/1688439266133.png.webp",
+        image: "https://images.unsplash.com/photo-1663148421873-1f19f6358c2d?q=80&w=800&auto=format&fit=crop",
     },
     {
         name: "realme 11 Pro+ 5G (Sunrise Beige)",
@@ -176,7 +176,7 @@ const mobiles = [
         price: 27999,
         category: "mobiles",
         brand: "realme",
-        image: "https://image01.realme.net/general/20230612/1686555823704.png.webp",
+        image: "https://images.unsplash.com/photo-1678550732742-c179268f7b3c?q=80&w=800&auto=format&fit=crop",
     },
     {
         name: "realme C55 (Sunshower, 6GB RAM)",
@@ -184,7 +184,7 @@ const mobiles = [
         price: 11999,
         category: "mobiles",
         brand: "realme",
-        image: "https://image01.realme.net/general/20230322/1679453578816.png.webp",
+        image: "https://images.unsplash.com/photo-1602157581561-2a6d71b806d2?q=80&w=800&auto=format&fit=crop",
     },
     {
         name: "realme GT 6T 5G (Fluid Silver)",
@@ -192,7 +192,7 @@ const mobiles = [
         price: 32999,
         category: "mobiles",
         brand: "realme",
-        image: "https://image01.realme.net/general/20240522/1716364987419.png.webp",
+        image: "https://images.unsplash.com/photo-1660851897395-88cc5264b967?q=80&w=800&auto=format&fit=crop",
     },
 
     // --- Motorola (4 products) ---
@@ -202,7 +202,7 @@ const mobiles = [
         price: 31999,
         category: "mobiles",
         brand: "motorola",
-        image: "https://motorolain.vtexassets.com/arquivos/ids/159066-800-auto?v=638478491740070000&width=800&height=auto&aspect=true",
+        image: "https://images.unsplash.com/photo-1610792516307-ea5acd9c3b0d?q=80&w=800&auto=format&fit=crop", // Motorola style
     },
     {
         name: "Motorola g24 Power (Glacier Blue)",
@@ -210,7 +210,7 @@ const mobiles = [
         price: 8999,
         category: "mobiles",
         brand: "motorola",
-        image: "https://motorolain.vtexassets.com/arquivos/ids/158784-800-auto?v=638422409024000000&width=800&height=auto&aspect=true",
+        image: "https://images.unsplash.com/photo-1595941069915-4ebc5197c14a?q=80&w=800&auto=format&fit=crop",
     },
     {
         name: "Motorola Edge 40 (Nebula Green)",
@@ -218,7 +218,7 @@ const mobiles = [
         price: 24999,
         category: "mobiles",
         brand: "motorola",
-        image: "https://motorolain.vtexassets.com/arquivos/ids/155767-800-auto?v=638196260177030000&width=800&height=auto&aspect=true",
+        image: "https://images.unsplash.com/photo-1647424683515-3733075677ba?q=80&w=800&auto=format&fit=crop",
     },
     {
         name: "Motorola g64 5G (Pearl Blue)",
@@ -226,7 +226,7 @@ const mobiles = [
         price: 14999,
         category: "mobiles",
         brand: "motorola",
-        image: "https://motorolain.vtexassets.com/arquivos/ids/159271-800-auto?v=638538859654330000&width=800&height=auto&aspect=true",
+        image: "https://images.unsplash.com/photo-1635832168752-d5966371ad52?q=80&w=800&auto=format&fit=crop",
     },
 
     // --- Poco (4 products) ---
@@ -236,7 +236,7 @@ const mobiles = [
         price: 15999,
         category: "mobiles",
         brand: "poco",
-        image: "https://rukminim2.flixcart.com/image/416/416/xif0q/mobile/g/v/a/-original-imagxsf3p7hzfz6p.jpeg?q=70",
+        image: "https://images.unsplash.com/photo-1598327105666-5b89351aff23?q=80&w=800&auto=format&fit=crop", // Poco style
     },
     {
         name: "POCO M6 Pro 5G (Forest Green)",
@@ -244,7 +244,7 @@ const mobiles = [
         price: 12999,
         category: "mobiles",
         brand: "poco",
-        image: "https://i01.appmifile.com/v1/MI_18455B3E4DA706226CF7535A58E875F0267/pms_1691053679.58068991!400x400!85.png",
+        image: "https://images.unsplash.com/photo-1609503986063-4523d45c55d0?q=80&w=800&auto=format&fit=crop",
     },
     {
         name: "POCO F5 5G (Snowstorm White)",
@@ -252,7 +252,7 @@ const mobiles = [
         price: 26999,
         category: "mobiles",
         brand: "poco",
-        image: "https://i01.appmifile.com/v1/MI_18455B3E4DA706226CF7535A58E875F0267/pms_1683187456.62264341!400x400!85.png",
+        image: "https://images.unsplash.com/photo-1595941069915-4ebc5197c14a?q=80&w=800&auto=format&fit=crop",
     },
     {
         name: "POCO C65 (Pastel Blue)",
@@ -260,7 +260,7 @@ const mobiles = [
         price: 8499,
         category: "mobiles",
         brand: "poco",
-        image: "https://i01.appmifile.com/v1/MI_18455B3E4DA706226CF7535A58E875F0267/pms_1699435523.36634827!400x400!85.png",
+        image: "https://images.unsplash.com/photo-1662580400032-4299b867c265?q=80&w=800&auto=format&fit=crop",
     },
 ];
 
