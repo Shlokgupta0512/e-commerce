@@ -72,7 +72,7 @@ const CategoryPage = () => {
 
 	// Dummy graphics for the banner based on category
 	const getBannerImage = (cat) => {
-		if (cat === "mobiles") return "https://rukminim1.flixcart.com/fk-p-flap/1600/270/image/aa1b237568600f12.jpg?q=20";
+		if (cat === "mobiles") return "https://images.pexels.com/photos/404280/pexels-photo-404280.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
 		return "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?q=80&w=2070";
 	};
 
