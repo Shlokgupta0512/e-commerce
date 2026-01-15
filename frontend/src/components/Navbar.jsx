@@ -10,13 +10,13 @@ const Navbar = () => {
 
 	return (
 		<header className='fixed top-0 left-0 w-full bg-white z-40 shadow-md border-b border-gray-100 transition-all duration-300'>
-			<div className='container mx-auto px-4 lg:px-10 py-2.5 md:py-3.5'>
-				<div className='flex items-center justify-between gap-6 lg:gap-14'>
+			<div className='container mx-auto px-3 sm:px-4 lg:px-10 py-2 sm:py-2.5 md:py-3.5'>
+				<div className='flex items-center justify-between gap-3 sm:gap-6 lg:gap-14'>
 
 					{/* Logo Section */}
 					<Link to='/' className='flex flex-col flex-shrink-0 group'>
-						<span className='text-3xl font-black text-blue-600 italic tracking-tighter leading-none group-hover:text-blue-700 transition-colors'>Mega</span>
-						<span className='text-xs font-bold text-gray-400 italic mt-0.5 flex items-center'>
+						<span className='text-2xl sm:text-3xl font-black text-blue-600 italic tracking-tighter leading-none group-hover:text-blue-700 transition-colors'>Mega</span>
+						<span className='text-[10px] sm:text-xs font-bold text-gray-400 italic mt-0.5 flex items-center'>
 							Mart <span className='text-yellow-500 ml-1'>Plus ✦</span>
 						</span>
 					</Link>
@@ -36,33 +36,33 @@ const Navbar = () => {
 					</div>
 
 					{/* Action Links */}
-					<nav className='flex items-center gap-6 lg:gap-10 flex-shrink-0'>
+					<nav className='flex items-center gap-3 sm:gap-6 lg:gap-10 flex-shrink-0'>
 
 						{/* Login / Profile */}
 						<div className='flex items-center'>
 							<SignedIn>
-								<div className='flex items-center gap-2.5 group cursor-pointer p-1.5 rounded-lg hover:bg-gray-50 transition-colors'>
+								<div className='flex items-center gap-1.5 sm:gap-2.5 group cursor-pointer p-1 sm:p-1.5 rounded-lg hover:bg-gray-50 transition-colors'>
 									<UserButton afterSignOutUrl='/' appearance={{
 										elements: {
-											userButtonAvatarBox: "w-9 h-9 shadow-sm"
+											userButtonAvatarBox: "w-8 h-8 sm:w-9 sm:h-9 shadow-sm"
 										}
 									}} />
-									<div className='flex flex-col'>
+									<div className='hidden md:flex flex-col'>
 										<span className='text-gray-400 text-[10px] font-bold uppercase tracking-wider'>Account</span>
-										<span className='text-gray-800 font-bold text-sm hidden lg:block -mt-1'>
+										<span className='text-gray-800 font-bold text-sm -mt-1'>
 											{user?.firstName || "Profile"}
 										</span>
 									</div>
-									<ChevronDown size={14} className='text-gray-400 group-hover:text-blue-500 transition-colors' />
+									<ChevronDown size={14} className='text-gray-400 group-hover:text-blue-500 transition-colors hidden lg:block' />
 								</div>
 							</SignedIn>
 							<SignedOut>
 								<Link
 									to='/login'
-									className='flex items-center gap-2.5 bg-blue-600 text-white px-7 py-2 rounded font-bold text-sm hover:bg-blue-700 transition-all shadow-lg shadow-blue-100'
+									className='flex items-center gap-1.5 sm:gap-2.5 bg-blue-600 text-white px-4 sm:px-7 py-1.5 sm:py-2 rounded font-bold text-xs sm:text-sm hover:bg-blue-700 transition-all shadow-lg shadow-blue-100'
 								>
-									<LogIn size={20} />
-									<span>Login</span>
+									<LogIn size={18} className="sm:w-5 sm:h-5" />
+									<span className="hidden sm:inline">Login</span>
 								</Link>
 							</SignedOut>
 						</div>
@@ -70,12 +70,12 @@ const Navbar = () => {
 						{/* Cart */}
 						<Link
 							to='/cart'
-							className='flex items-center gap-2.5 text-gray-700 hover:text-blue-600 transition-all group'
+							className='flex items-center gap-1.5 sm:gap-2.5 text-gray-700 hover:text-blue-600 transition-all group'
 						>
-							<div className='relative p-1.5 rounded-full group-hover:bg-blue-50 transition-colors'>
-								<ShoppingCart size={24} className='text-gray-700 group-hover:text-blue-600 transition-colors' />
+							<div className='relative p-1 sm:p-1.5 rounded-full group-hover:bg-blue-50 transition-colors'>
+								<ShoppingCart size={22} className='text-gray-700 group-hover:text-blue-600 transition-colors sm:w-6 sm:h-6' />
 								{cart.length > 0 && (
-									<span className='absolute top-0 -right-1 bg-[#ff6161] text-white text-[10px] font-bold rounded-full w-5 h-5 flex items-center justify-center border-2 border-white shadow-md animate-bounce-short'>
+									<span className='absolute -top-1 -right-1 bg-[#ff6161] text-white text-[10px] font-bold rounded-full w-5 h-5 flex items-center justify-center border-2 border-white shadow-md animate-bounce-short'>
 										{cart.length}
 									</span>
 								)}
@@ -86,7 +86,7 @@ const Navbar = () => {
 						{/* Become a Seller */}
 						<Link
 							to={isUploader ? '/secret-dashboard' : '/become-seller'}
-							className='flex items-center gap-2.5 text-gray-700 hover:text-blue-600 transition-all group'
+							className='hidden md:flex items-center gap-2.5 text-gray-700 hover:text-blue-600 transition-all group'
 						>
 							<div className='p-1.5 rounded-full group-hover:bg-blue-50 transition-colors'>
 								<Store size={22} className='text-gray-700 group-hover:text-blue-600 transition-colors' />
@@ -102,7 +102,7 @@ const Navbar = () => {
 				</div>
 
 				{/* Mobile Search Overlay */}
-				<div className='mt-3.5 sm:hidden relative pb-1'>
+				<div className='mt-2.5 sm:hidden relative pb-1'>
 					<input
 						type='text'
 						placeholder='Search products'

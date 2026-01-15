@@ -66,9 +66,9 @@ const CategoryPage = () => {
 	};
 
 	return (
-		<div className="min-h-screen bg-[#f1f3f6] py-3">
+		<div className="min-h-screen bg-[#f1f3f6] py-2 sm:py-3 mt-16 sm:mt-0">
 			<div className="max-w-[1680px] mx-auto px-2 sm:px-3">
-				<div className="flex flex-col lg:flex-row gap-3">
+				<div className="flex flex-col lg:flex-row gap-2 sm:gap-3">
 
 					{/* Left Sidebar - Filters (Hidden on Mobile, nice to have for Desktop) */}
 					<div className="hidden lg:block w-[280px] flex-shrink-0 bg-white shadow-sm rounded-sm p-4 h-fit sticky top-[100px]">
@@ -144,32 +144,32 @@ const CategoryPage = () => {
 					{/* Main Content Area */}
 					<div className="flex-1">
 						{/* Header & Breadcrumbs for Mobile (Simplified) */}
-						<div className="bg-white p-4 shadow-sm rounded-sm mb-3">
+						<div className="bg-white p-3 sm:p-4 shadow-sm rounded-sm mb-2 sm:mb-3">
 							<h1 className="text-lg sm:text-2xl font-bold text-gray-800 mb-2">
 								{formattedCategory}
-								<span className="text-sm font-normal text-gray-500 ml-2">(Showing 1 – {filteredProducts?.length || 0} products)</span>
+								<span className="text-xs sm:text-sm font-normal text-gray-500 ml-2">(Showing 1 – {filteredProducts?.length || 0} products)</span>
 							</h1>
-							<div className="flex items-center gap-4 text-sm text-gray-700 font-medium">
-								<span className="font-bold border-b-2 border-blue-600 pb-0.5 text-blue-600 cursor-pointer">Popularity</span>
-								<span className="cursor-pointer hover:text-blue-600">Price -- Low to High</span>
-								<span className="cursor-pointer hover:text-blue-600">Price -- High to Low</span>
-								<span className="cursor-pointer hover:text-blue-600">Newest First</span>
+							<div className="flex items-center gap-2 sm:gap-4 text-xs sm:text-sm text-gray-700 font-medium overflow-x-auto scrollbar-hide pb-1">
+								<span className="font-bold border-b-2 border-blue-600 pb-0.5 text-blue-600 cursor-pointer whitespace-nowrap">Popularity</span>
+								<span className="cursor-pointer hover:text-blue-600 whitespace-nowrap">Price -- Low to High</span>
+								<span className="cursor-pointer hover:text-blue-600 whitespace-nowrap hidden sm:inline">Price -- High to Low</span>
+								<span className="cursor-pointer hover:text-blue-600 whitespace-nowrap hidden sm:inline">Newest First</span>
 							</div>
 						</div>
 
 						{/* Promo Banner */}
-						<div className="bg-white shadow-sm rounded-sm mb-3 overflow-hidden">
+						<div className="bg-white shadow-sm rounded-sm mb-2 sm:mb-3 overflow-hidden">
 							<img
 								src={getBannerImage(category)}
 								alt="Category Banner"
-								className="w-full h-[150px] sm:h-[250px] object-cover object-center"
+								className="w-full h-[100px] sm:h-[150px] lg:h-[200px] object-cover object-center"
 							/>
 						</div>
 
 						{/* Product Grid */}
-						<div className="bg-white shadow-sm rounded-sm p-3">
+						<div className="bg-white shadow-sm rounded-sm p-2 sm:p-3">
 							<motion.div
-								className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
+								className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4"
 								initial={{ opacity: 0 }}
 								animate={{ opacity: 1 }}
 								transition={{ duration: 0.5 }}
