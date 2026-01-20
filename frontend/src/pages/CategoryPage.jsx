@@ -43,6 +43,7 @@ const CategoryPage = () => {
 
 	// Derived state for filtering
 	const [selectedBrands, setSelectedBrands] = useState(subcategory ? [subcategory.toLowerCase()] : []);
+	const [sortBy, setSortBy] = useState("popularity");
 
 	// Update selected brands if URL subcategory changes
 	useEffect(() => {
@@ -61,14 +62,21 @@ const CategoryPage = () => {
 
 	const formattedCategory = (subcategory ? subcategory : category).charAt(0).toUpperCase() + (subcategory ? subcategory : category).slice(1);
 
-	// Filter Products Logic
-	const filteredProducts = products?.filter(product => {
-		// Brand Filter
-		if (selectedBrands.length > 0) {
-			return selectedBrands.includes(product.brand?.toLowerCase());
-		}
-		return true;
-	});
+	// Filter and Sort Products Logic
+	const filteredProducts = products
+		?.filter(product => {
+			// Brand Filter
+			if (selectedBrands.length > 0) {
+				return selectedBrands.includes(product.brand?.toLowerCase());
+			}
+			return true;
+		})
+		?.sort((a, b) => {
+			if (sortBy === "price-low") return a.price - b.price;
+			if (sortBy === "price-high") return b.price - a.price;
+			if (sortBy === "newest") return new Date(b.createdAt) - new Date(a.createdAt);
+			return 0; // "popularity" or default -> original order
+		});
 
 	// Dummy graphics for the banner based on category
 	const getBannerImage = (cat) => {
@@ -161,10 +169,30 @@ const CategoryPage = () => {
 								<span className="text-xs sm:text-sm font-normal text-gray-500 ml-2">(Showing 1 – {filteredProducts?.length || 0} products)</span>
 							</h1>
 							<div className="flex items-center gap-2 sm:gap-4 text-xs sm:text-sm text-gray-700 font-medium overflow-x-auto scrollbar-hide pb-1">
-								<span className="font-bold border-b-2 border-blue-600 pb-0.5 text-blue-600 cursor-pointer whitespace-nowrap">Popularity</span>
-								<span className="cursor-pointer hover:text-blue-600 whitespace-nowrap">Price -- Low to High</span>
-								<span className="cursor-pointer hover:text-blue-600 whitespace-nowrap hidden sm:inline">Price -- High to Low</span>
-								<span className="cursor-pointer hover:text-blue-600 whitespace-nowrap hidden sm:inline">Newest First</span>
+								<span
+									className={`cursor-pointer whitespace-nowrap ${sortBy === "popularity" ? "font-bold border-b-2 border-blue-600 pb-0.5 text-blue-600" : "hover:text-blue-600"}`}
+									onClick={() => setSortBy("popularity")}
+								>
+									Popularity
+								</span>
+								<span
+									className={`cursor-pointer whitespace-nowrap ${sortBy === "price-low" ? "font-bold border-b-2 border-blue-600 pb-0.5 text-blue-600" : "hover:text-blue-600"}`}
+									onClick={() => setSortBy("price-low")}
+								>
+									Price -- Low to High
+								</span>
+								<span
+									className={`cursor-pointer whitespace-nowrap hidden sm:inline ${sortBy === "price-high" ? "font-bold border-b-2 border-blue-600 pb-0.5 text-blue-600" : "hover:text-blue-600"}`}
+									onClick={() => setSortBy("price-high")}
+								>
+									Price -- High to Low
+								</span>
+								<span
+									className={`cursor-pointer whitespace-nowrap hidden sm:inline ${sortBy === "newest" ? "font-bold border-b-2 border-blue-600 pb-0.5 text-blue-600" : "hover:text-blue-600"}`}
+									onClick={() => setSortBy("newest")}
+								>
+									Newest First
+								</span>
 							</div>
 						</div>
 
